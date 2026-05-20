@@ -1,6 +1,10 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
-import { PingReqType, PingResType } from "@repo/api"
+import { PingReqSchema, PingResSchema } from '@repo/api';
+import { createZodDto, ZodResponse } from 'nestjs-zod';
+
+class PingReqDto extends createZodDto(PingReqSchema) {}
+class PingResDto extends createZodDto(PingResSchema) {}
 
 @Controller()
 export class AppController {
@@ -12,8 +16,8 @@ export class AppController {
   }
 
   @Post('ping')
-  ping(@Body() ping: PingReqType): PingResType {
-    console.log('ping', ping)
+  @ZodResponse({ type: PingResDto })
+  ping(@Body() ping: PingReqDto) {
     return { message: ping.message, time: new Date(Date.now()) }
   }
 }
