@@ -6,7 +6,7 @@ export const PingReqSchema = z.object({
 
 export const PingResSchema = z.object({
   message: z.string().optional(),
-  time: z.date()
+  time: z.iso.datetime()
 });
 
 export type PingReqType = z.infer<typeof PingReqSchema>;
