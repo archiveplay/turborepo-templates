@@ -18,6 +18,6 @@ export class AppController {
   @Post('ping')
   @ZodResponse({ type: PingResDto })
   ping(@Body() ping: PingReqDto) {
-    return { message: ping.message, time: new Date(Date.now()) }
+    return { message: ping.message, time: new Date(Date.now()).toDateString() }
   }
 }
