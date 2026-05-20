@@ -2,6 +2,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { PingReqSchema, PingResSchema } from '@repo/api';
 import { createZodDto, ZodResponse } from 'nestjs-zod';
+import { prisma } from "@repo/db";
 
 class PingReqDto extends createZodDto(PingReqSchema) {}
 class PingResDto extends createZodDto(PingResSchema) {}
@@ -13,6 +14,11 @@ export class AppController {
   @Get()
   getHello(): string {
     return this.appService.getHello();
+  }
+
+  @Get('users')
+  users() {
+    return prisma.user.findMany()
   }
 
   @Post('ping')
