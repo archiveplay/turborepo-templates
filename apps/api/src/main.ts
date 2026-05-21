@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { cleanupOpenApiDoc } from 'nestjs-zod';
+import { env } from '@repo/config/env/server';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -16,7 +17,7 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, cleanupOpenApiDoc(documentFactory()));
   SwaggerModule.setup('api', app, documentFactory);
 
-  await app.listen(process.env.API_PORT ?? 4000);
+  await app.listen(env.PORT ?? 4000);
 }
 bootstrap().catch((err) => {
   console.error('Application failed to start:', err);
