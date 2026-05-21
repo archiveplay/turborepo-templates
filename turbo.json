@@ -21,6 +21,14 @@
     },
     "test": {
       "dependsOn": ["^test"]
+    },
+    "generate:openapi": {
+      "cache": false
+    },
+    "generate:sdk": {
+      "dependsOn": ["generate:openapi"],
+      "cache": false,
+      "outputs": ["packages/api/client.ts"]
     }
   }
 }

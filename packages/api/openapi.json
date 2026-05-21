@@ -1,0 +1,76 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "AppController_getHello",
+        "parameters": [],
+        "responses": { "200": { "description": "" } },
+        "tags": ["App"]
+      }
+    },
+    "/users": {
+      "get": {
+        "operationId": "AppController_users",
+        "parameters": [],
+        "responses": { "200": { "description": "" } },
+        "tags": ["App"]
+      }
+    },
+    "/ping": {
+      "post": {
+        "operationId": "AppController_ping",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PingReqDto" }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/PingResDto_Output" }
+              }
+            }
+          }
+        },
+        "tags": ["App"]
+      }
+    }
+  },
+  "info": {
+    "title": "Swagger",
+    "description": "Swagger api description",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [{ "name": "swagger", "description": "" }],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "PingReqDto": {
+        "type": "object",
+        "properties": { "message": { "type": "string" } }
+      },
+      "PingResDto_Output": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "x-nestjs_zod-parent-additional-properties": false
+          },
+          "time": {
+            "type": "string",
+            "x-nestjs_zod-parent-additional-properties": false
+          }
+        },
+        "required": ["time"]
+      }
+    }
+  }
+}

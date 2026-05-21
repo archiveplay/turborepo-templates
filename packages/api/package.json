@@ -4,9 +4,16 @@
   "private": true,
   "exports": {
     "./ping": "./contracts/ping.ts",
-    "./user": "./contracts/user.ts"
+    "./user": "./contracts/user.ts",
+    "./client": "./client.ts"
+  },
+  "scripts": {
+    "generate:sdk": "orval"
   },
   "dependencies": {
     "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "orval": "^8.11.0"
   }
 }
