@@ -1,1 +1,1 @@
-pnpm turbo run lint
+pnpm turbo run lint && pnpm run format
