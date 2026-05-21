@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
-import { PingReqSchema, PingResSchema } from '@repo/api';
+import { PingReqSchema, PingResSchema } from '@repo/api/ping';
 import { createZodDto, ZodResponse } from 'nestjs-zod';
 import { prisma } from "@repo/db";
 
