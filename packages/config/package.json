@@ -4,7 +4,8 @@
   "private": true,
   "exports": {
     "./env/vite": "./env/vite.ts",
-    "./env/server": "./env/server.ts"
+    "./env/server": "./env/server.ts",
+    "./env/rabbit": "./env/rabbit.ts"
   },
   "dependencies": {
     "dotenv": "^17.4.2",

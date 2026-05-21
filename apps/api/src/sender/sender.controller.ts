@@ -6,8 +6,9 @@ import { EventDto } from './event.dto';
 export class SenderController {
   constructor(private readonly senderService: SenderService) {}
 
-  @Post('sendEvent')
+  @Post('send-event')
   sendEvent(@Body() event: EventDto) {
+    console.log('ctlr', event);
     this.senderService.sendEvent(event);
   }
 }

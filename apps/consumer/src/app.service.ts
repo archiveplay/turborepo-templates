@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
+import { EventType } from '@repo/api/rabbit';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  handleEvent(event: EventType) {
+    console.log('event', event);
   }
 }

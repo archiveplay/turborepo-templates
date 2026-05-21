@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { SenderService } from './sender.service';
 import { SenderController } from './sender.controller';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import { env } from '@repo/config/env/rabbit';
 
 @Module({
   imports: [
@@ -10,7 +11,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         name: 'SENDER_SERVICE',
         transport: Transport.RMQ,
         options: {
-          urls: ['amqp://localhost:5672'],
+          urls: [env.RABBIT_URL],
           queue: 'orders-queue',
         },
       },
