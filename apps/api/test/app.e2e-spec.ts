@@ -3,7 +3,7 @@ import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
 import { App } from 'supertest/types';
 import { AppModule } from './../src/app.module';
-import { PingResType } from '@repo/api';
+import { PingResType } from '@repo/api/ping';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication<App>;
@@ -36,9 +36,9 @@ describe('AppController (e2e)', () => {
           }),
         );
 
-        expect(new Date((res.body as PingResType).time).getTime()).toBeLessThanOrEqual(
-          Date.now(),
-        );
+        expect(
+          new Date((res.body as PingResType).time).getTime(),
+        ).toBeLessThanOrEqual(Date.now());
       });
   });
 

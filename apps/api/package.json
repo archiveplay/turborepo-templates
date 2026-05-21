@@ -37,6 +37,7 @@
     "@nestjs/testing": "^11.0.1",
     "@repo/api": "workspace:*",
     "@repo/db": "workspace:*",
+    "@repo/config": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/express": "^5.0.0",
