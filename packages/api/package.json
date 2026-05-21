@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "exports": {
-    "./ping": "./contracts/ping.ts"
+    "./ping": "./contracts/ping.ts",
+    "./user": "./contracts/user.ts"
   },
   "dependencies": {
     "zod": "^4.4.3"
