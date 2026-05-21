@@ -4,6 +4,7 @@ import request from 'supertest';
 import { App } from 'supertest/types';
 import { AppModule } from './../src/app.module';
 import { PingResType } from '@repo/api/ping';
+import { UserResType } from '@repo/api/user';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication<App>;
@@ -39,6 +40,23 @@ describe('AppController (e2e)', () => {
         expect(
           new Date((res.body as PingResType).time).getTime(),
         ).toBeLessThanOrEqual(Date.now());
+      });
+  });
+
+  it('/users (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/users')
+      .expect(200)
+      .expect((res) => {
+        expect(res.body as UserResType[]).toEqual(
+          expect.arrayOf(
+            expect.objectContaining({
+              id: expect.any(Number),
+              email: expect.any(String),
+              name: expect.any(String),
+            }),
+          ),
+        );
       });
   });
 

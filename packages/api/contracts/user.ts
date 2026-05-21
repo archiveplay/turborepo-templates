@@ -12,5 +12,3 @@ export const UserResSchema = z.object({
 
 export type UserResType = z.infer<typeof UserResSchema>;
 export type UserReqType = z.infer<typeof UserReqSchema>;
-
-

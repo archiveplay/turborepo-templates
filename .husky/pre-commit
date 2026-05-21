@@ -1,1 +1,2 @@
-pnpm turbo run lint && pnpm run format
+pnpm lint-staged
+pnpm turbo run lint --affected --continue
