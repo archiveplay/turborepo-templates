@@ -5,9 +5,10 @@ import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { ZodSerializerInterceptor, ZodValidationPipe } from 'nestjs-zod';
 import { AllExceptionsFilter } from '@repo/nest-extensions/filters/all-exceptions';
 import { APP_FILTER } from '@nestjs/core';
+import { SenderModule } from './sender/sender.module';
 
 @Module({
-  imports: [],
+  imports: [SenderModule],
   controllers: [AppController],
   providers: [
     AppService,

@@ -5,6 +5,7 @@
   "exports": {
     "./ping": "./contracts/ping.ts",
     "./user": "./contracts/user.ts",
+    "./rabit": "./contracts/rabit.ts",
     "./client": "./client.ts"
   },
   "scripts": {
