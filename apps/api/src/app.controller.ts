@@ -13,11 +13,6 @@ class UsersResDto extends createZodDto(UsersResSchema) {}
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
-
   @Get('users')
   @ZodResponse({ type: UsersResDto })
   users() {
