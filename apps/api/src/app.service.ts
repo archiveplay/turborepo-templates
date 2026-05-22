@@ -16,7 +16,4 @@ export class AppService {
   getUsers(): Promise<UsersResType> {
     return prisma.user.findMany();
   }
-  getUsers(): Promise<UsersResType> {
-    return prisma.user.findMany();
-  }
 }
