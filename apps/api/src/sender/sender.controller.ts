@@ -7,7 +7,7 @@ export class SenderController {
   constructor(private readonly senderService: SenderService) {}
 
   @Post('send-event')
-  sendEvent(@Body() event: EventDto) {
-    this.senderService.sendEvent(event);
+  async sendEvent(@Body() event: EventDto) {
+    await this.senderService.sendEvent(event);
   }
 }

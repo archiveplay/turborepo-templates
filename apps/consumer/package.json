@@ -40,6 +40,7 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/logger": "workspace:*",
     "@repo/config": "workspace:*",
+    "@repo/db": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/express": "^5.0.0",
     "@types/jest": "^30.0.0",

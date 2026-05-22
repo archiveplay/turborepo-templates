@@ -11,6 +11,11 @@ datasource db {
   provider = "postgresql"
 }
 
+model ProcessedEvent {
+  id        String   @id @db.Uuid
+  createdAt DateTime @default(now())
+}
+
 model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
