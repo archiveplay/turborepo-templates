@@ -5,8 +5,12 @@ export async function markEventProcessed(eventId: string) {
     await prisma.processedEvent.create({
       data: { id: eventId },
     });
-    return true;
-  } catch {
-    return false;
+
+    return { inserted: true };
+  } catch (e: any) {
+    if (e.code === 'P2002') {
+      return { inserted: false };
+    }
+    throw e;
   }
 }

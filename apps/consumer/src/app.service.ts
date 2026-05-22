@@ -12,20 +12,15 @@ export class AppService {
     const message = context.getMessage();
 
     try {
-      const isFirstTime = await markEventProcessed(event.id);
-
-      this.logger.log(
-        'Event getted',
-        event,
-        isFirstTime ? 'first time' : 'already in proccess',
-      );
-
-      if (!isFirstTime) {
-        channel.ack(message);
-        return;
-      }
-    } catch {
-      channel.nack(message, false, true);
+      const { inserted } = await markEventProcessed(event.id);
+      this.logger.log('Event received', {
+        eventId: event.id,
+        state: inserted ? 'first-time' : 'duplicate',
+      });
+      channel.ack(message);
+    } catch (err) {
+      this.logger.error('Event processing failed', err);
+      channel.nack(message, false, false);
     }
   }
 }
