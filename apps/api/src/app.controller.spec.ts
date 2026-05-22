@@ -14,9 +14,21 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+  describe('users', () => {
+    it('should return an array of users', async () => {
+      const result = await appController.users();
+
+      expect(Array.isArray(result)).toBe(true);
+
+      expect(result).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            id: expect.any(Number),
+            email: expect.any(String),
+            name: expect.any(String),
+          }),
+        ]),
+      );
     });
   });
 });
