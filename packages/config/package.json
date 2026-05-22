@@ -5,7 +5,8 @@
   "exports": {
     "./env/vite": "./env/vite.ts",
     "./env/server": "./env/server.ts",
-    "./env/rabbit": "./env/rabbit.ts"
+    "./env/rabbit": "./env/rabbit.ts",
+    "./env/tg": "./env/tg.ts"
   },
   "dependencies": {
     "dotenv": "^17.4.2",
