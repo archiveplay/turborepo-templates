@@ -8,7 +8,6 @@ export class SenderController {
 
   @Post('send-event')
   sendEvent(@Body() event: EventDto) {
-    console.log('ctlr', event);
     this.senderService.sendEvent(event);
   }
 }

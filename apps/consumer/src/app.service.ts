@@ -1,9 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { EventType } from '@repo/api/rabbit';
+
+const logger = new Logger('AppService');
 
 @Injectable()
 export class AppService {
   handleEvent(event: EventType) {
-    console.log('event', event);
+    logger.log('Event getted', event);
   }
 }

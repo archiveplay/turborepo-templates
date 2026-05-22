@@ -7,7 +7,6 @@ export class SenderService {
   constructor(@Inject('SENDER_SERVICE') private rabbit: ClientProxy) {}
 
   sendEvent(event: EventType) {
-    console.log('send event', event);
     this.rabbit.emit(event.type, event.data);
   }
 }
