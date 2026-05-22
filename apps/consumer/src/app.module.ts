@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 import { AllExceptionsFilter } from '@repo/nest-extensions/filters/all-exceptions';
 import { APP_FILTER } from '@nestjs/core';
 import { TgService } from './tg/tg.service';
+import { TgModule } from './tg/tg.module';
 
 @Module({
-  imports: [],
+  imports: [TgModule],
   controllers: [AppController],
   providers: [
     AppService,
