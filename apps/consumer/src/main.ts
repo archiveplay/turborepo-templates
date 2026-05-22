@@ -12,6 +12,8 @@ async function bootstrap() {
         urls: [env.RABBIT_URL],
         queue: 'orders-queue',
         persistent: true,
+        prefetchCount: 1,
+        noAck: false,
         queueOptions: {
           durable: true,
         },
