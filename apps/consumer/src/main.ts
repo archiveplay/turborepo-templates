@@ -11,6 +11,10 @@ async function bootstrap() {
       options: {
         urls: [env.RABBIT_URL],
         queue: 'orders-queue',
+        persistent: true,
+        queueOptions: {
+          durable: true,
+        },
       },
     },
   );
