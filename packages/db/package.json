@@ -12,6 +12,7 @@
     "dev": "tsup src/* --watch --format esm",
     "format": "prisma format",
     "generate": "prisma generate",
+    "postinstall": "pnpm run generate",
     "prebuild": "pnpm run generate",
     "predev": "pnpm run generate",
     "studio": "prisma studio"
