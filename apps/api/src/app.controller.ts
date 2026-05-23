@@ -1,21 +1,7 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  ParseIntPipe,
-  Post,
-} from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { UserResDto, UsersResDto } from './common/dto/';
 import { AppService } from './app.service';
-import { PingReqSchema, PingResSchema } from '@repo/api/ping';
-import { createZodDto, ZodResponse } from 'nestjs-zod';
-import { UserResSchema, UsersResSchema } from '@repo/api/user';
-
-class PingReqDto extends createZodDto(PingReqSchema) {}
-class PingResDto extends createZodDto(PingResSchema) {}
-
-class UsersResDto extends createZodDto(UsersResSchema) {}
-class UserResDto extends createZodDto(UserResSchema) {}
+import { ZodResponse } from 'nestjs-zod';
 
 @Controller()
 export class AppController {
@@ -31,11 +17,5 @@ export class AppController {
   @ZodResponse({ type: UsersResDto })
   users() {
     return this.appService.getUsers();
-  }
-
-  @Post('ping')
-  @ZodResponse({ type: PingResDto })
-  ping(@Body() ping: PingReqDto) {
-    return { message: ping.message, time: new Date(Date.now()).toDateString() };
   }
 }
