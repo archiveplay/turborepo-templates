@@ -26,6 +26,7 @@
     "@nestjs/platform-express": "^11.0.1",
     "@repo/api": "workspace:*",
     "@repo/db": "workspace:*",
+    "@repo/nest-extensions": "workspace:*",
     "amqp-connection-manager": "^5.0.0",
     "amqplib": "^2.0.1",
     "nestjs-zod": "^5.4.0",
