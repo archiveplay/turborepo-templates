@@ -5,9 +5,7 @@
     "./filters/all-exceptions": "./dist/filters/all-exceptions.filter.js"
   },
   "scripts": {
-    "clean": "rm -rf dist",
-    "build": "tsc -p tsconfig.json",
-    "prebuild": "pnpm clean"
+    "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
