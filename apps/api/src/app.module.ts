@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { ZodSerializerInterceptor, ZodValidationPipe } from 'nestjs-zod';
+import { AllExceptionsFilter } from '@repo/nest-extensions/filters/all-exceptions';
+import { APP_FILTER } from '@nestjs/core';
 
 @Module({
   imports: [],
@@ -16,6 +18,10 @@ import { ZodSerializerInterceptor, ZodValidationPipe } from 'nestjs-zod';
     {
       provide: APP_INTERCEPTOR,
       useClass: ZodSerializerInterceptor,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: AllExceptionsFilter,
     },
   ],
 })
