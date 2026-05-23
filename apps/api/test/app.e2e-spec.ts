@@ -18,13 +18,6 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
-  });
-
   it('/ping (POST)', () => {
     return request(app.getHttpServer())
       .post('/ping')
@@ -40,6 +33,21 @@ describe('AppController (e2e)', () => {
         expect(
           new Date((res.body as PingResType).time).getTime(),
         ).toBeLessThanOrEqual(Date.now());
+      });
+  });
+
+  it('/users/1 (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/users/1')
+      .expect(200)
+      .expect((res) => {
+        expect(res.body as UserResType).toEqual(
+          expect.objectContaining({
+            id: expect.any(Number),
+            email: expect.any(String),
+            name: expect.any(String),
+          }),
+        );
       });
   });
 
