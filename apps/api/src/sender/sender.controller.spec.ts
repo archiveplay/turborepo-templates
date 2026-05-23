@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Test } from '@nestjs/testing';
 import { SenderController } from './sender.controller';
 import { SenderService } from './sender.service';
@@ -7,16 +6,10 @@ import { EventType } from '@repo/api/rabbit';
 jest.mock('uuid', () => ({
   v4: () => 'test-uuid',
 }));
-=======
-import { Test, TestingModule } from '@nestjs/testing';
-import { SenderController } from './sender.controller';
-import { SenderService } from './sender.service';
->>>>>>> 26e5f3f (feat(apps/consumer): add consumer support)
 
 describe('SenderController', () => {
   let controller: SenderController;
 
-<<<<<<< HEAD
   const mockSenderService = {
     sendEvent: jest.fn(),
   };
@@ -99,18 +92,5 @@ describe('SenderController', () => {
     await controller.sendEvent(event as EventType);
 
     expect(mockSenderService.sendEvent).toHaveBeenCalledTimes(2);
-=======
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [SenderController],
-      providers: [SenderService],
-    }).compile();
-
-    controller = module.get<SenderController>(SenderController);
-  });
-
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
->>>>>>> 26e5f3f (feat(apps/consumer): add consumer support)
   });
 });
