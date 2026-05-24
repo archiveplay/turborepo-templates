@@ -3,7 +3,7 @@
   "paths": {
     "/users/{id}": {
       "get": {
-        "operationId": "AppController_userById",
+        "operationId": "UserController_userById",
         "parameters": [
           {
             "name": "id",
@@ -22,12 +22,12 @@
             }
           }
         },
-        "tags": ["App"]
+        "tags": ["User"]
       }
     },
     "/users": {
       "get": {
-        "operationId": "AppController_users",
+        "operationId": "UserController_users",
         "parameters": [],
         "responses": {
           "default": {
@@ -39,7 +39,7 @@
             }
           }
         },
-        "tags": ["App"]
+        "tags": ["User"]
       }
     }
   },

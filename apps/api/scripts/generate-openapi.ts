@@ -15,9 +15,10 @@ async function run() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
 
-  SwaggerModule.setup('api', app, cleanupOpenApiDoc(document));
-
-  writeFileSync('../../packages/api/openapi.json', JSON.stringify(document));
+  writeFileSync(
+    '../../packages/api/openapi.json',
+    JSON.stringify(cleanupOpenApiDoc(document)),
+  );
 
   await app.close(); // important
 }

@@ -31,71 +31,74 @@ export interface UsersResDtoOutput {
   root?: UsersResDtoOutputRootItem[];
 }
 
-export type appControllerUserByIdResponseDefault = {
+export type userControllerUserByIdResponseDefault = {
   data: UserResDtoOutput;
   status: number;
 };
-export type appControllerUserByIdResponseError =
-  appControllerUserByIdResponseDefault & {
+export type userControllerUserByIdResponseError =
+  userControllerUserByIdResponseDefault & {
     headers: Headers;
   };
 
-export type appControllerUserByIdResponse = appControllerUserByIdResponseError;
+export type userControllerUserByIdResponse =
+  userControllerUserByIdResponseError;
 
-export const getAppControllerUserByIdUrl = (id: number) => {
+export const getUserControllerUserByIdUrl = (id: number) => {
   return `/users/${id}`;
 };
 
-export const appControllerUserById = async (
+export const userControllerUserById = async (
   id: number,
   options?: RequestInit,
-): Promise<appControllerUserByIdResponse> => {
-  const res = await fetch(getAppControllerUserByIdUrl(id), {
+): Promise<userControllerUserByIdResponse> => {
+  const res = await fetch(getUserControllerUserByIdUrl(id), {
     ...options,
     method: "GET",
   });
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text();
 
-  const data: appControllerUserByIdResponse["data"] = body
+  const data: userControllerUserByIdResponse["data"] = body
     ? JSON.parse(body)
     : {};
   return {
     data,
     status: res.status,
     headers: res.headers,
-  } as appControllerUserByIdResponse;
+  } as userControllerUserByIdResponse;
 };
 
-export type appControllerUsersResponseDefault = {
+export type userControllerUsersResponseDefault = {
   data: UsersResDtoOutput;
   status: number;
 };
-export type appControllerUsersResponseError =
-  appControllerUsersResponseDefault & {
+export type userControllerUsersResponseError =
+  userControllerUsersResponseDefault & {
     headers: Headers;
   };
 
-export type appControllerUsersResponse = appControllerUsersResponseError;
+export type userControllerUsersResponse = userControllerUsersResponseError;
 
-export const getAppControllerUsersUrl = () => {
+export const getUserControllerUsersUrl = () => {
   return `/users`;
 };
 
-export const appControllerUsers = async (
+export const userControllerUsers = async (
   options?: RequestInit,
-): Promise<appControllerUsersResponse> => {
-  const res = await fetch(getAppControllerUsersUrl(), {
+): Promise<userControllerUsersResponse> => {
+  const res = await fetch(getUserControllerUsersUrl(), {
     ...options,
     method: "GET",
   });
 
   const body = [204, 205, 304].includes(res.status) ? null : await res.text();
 
-  const data: appControllerUsersResponse["data"] = body ? JSON.parse(body) : {};
+  const data: userControllerUsersResponse["data"] = body
+    ? JSON.parse(body)
+    : {};
   return {
     data,
     status: res.status,
     headers: res.headers,
-  } as appControllerUsersResponse;
+  } as userControllerUsersResponse;
 };
