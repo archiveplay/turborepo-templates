@@ -1,11 +1,27 @@
 {
   "openapi": "3.0.0",
   "paths": {
-    "/": {
+    "/users/{id}": {
       "get": {
-        "operationId": "AppController_getHello",
-        "parameters": [],
-        "responses": { "200": { "description": "" } },
+        "operationId": "AppController_userById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserResDto_Output" }
+              }
+            }
+          }
+        },
         "tags": ["App"]
       }
     },
@@ -13,28 +29,12 @@
       "get": {
         "operationId": "AppController_users",
         "parameters": [],
-        "responses": { "200": { "description": "" } },
-        "tags": ["App"]
-      }
-    },
-    "/ping": {
-      "post": {
-        "operationId": "AppController_ping",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": { "$ref": "#/components/schemas/PingReqDto" }
-            }
-          }
-        },
         "responses": {
           "default": {
             "description": "",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/PingResDto_Output" }
+                "schema": { "$ref": "#/components/schemas/UsersResDto_Output" }
               }
             }
           }
@@ -53,23 +53,54 @@
   "servers": [],
   "components": {
     "schemas": {
-      "PingReqDto": {
-        "type": "object",
-        "properties": { "message": { "type": "string" } }
-      },
-      "PingResDto_Output": {
+      "UserResDto_Output": {
         "type": "object",
         "properties": {
-          "message": {
-            "type": "string",
+          "id": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991,
             "x-nestjs_zod-parent-additional-properties": false
           },
-          "time": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
+            "x-nestjs_zod-parent-additional-properties": false
+          },
+          "name": {
             "type": "string",
             "x-nestjs_zod-parent-additional-properties": false
           }
         },
-        "required": ["time"]
+        "required": ["id", "email", "name"]
+      },
+      "UsersResDto_Output": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+                },
+                "name": { "type": "string" }
+              },
+              "required": ["id", "email", "name"],
+              "additionalProperties": false
+            },
+            "x-nestjs_zod-unwrap-root": true
+          }
+        }
       }
     }
   }

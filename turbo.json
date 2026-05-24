@@ -4,7 +4,7 @@
   "globalDependencies": ["**/.env.*", "**/tsconfig.json", "**/turbo.json"],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "generate:sdk"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
@@ -24,12 +24,14 @@
       "dependsOn": ["^test"]
     },
     "generate:openapi": {
-      "cache": false
+      "cache": false,
+      "outputs": ["openapi.json"]
     },
     "generate:sdk": {
       "dependsOn": ["generate:openapi"],
-      "cache": false,
-      "outputs": ["packages/api/client.ts"]
+      "inputs": ["openapi.json"],
+      "outputs": ["client.ts"],
+      "cache": false
     }
   }
 }

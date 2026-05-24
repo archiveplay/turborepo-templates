@@ -8,12 +8,14 @@
     "./client": "./client.ts"
   },
   "scripts": {
+    "generate:openapi": "ts-node ../../apps/api/scripts/generate-openapi.ts",
     "generate:sdk": "orval"
   },
   "dependencies": {
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "orval": "^8.11.0"
+    "orval": "^8.11.0",
+    "ts-node": "^10.9.2"
   }
 }

@@ -9,7 +9,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
     "generate:openapi": "turbo run generate:openapi",
-    "generate:sdk": "turbo run generate:openapi && turbo run generate:sdk",
+    "generate:sdk": "turbo run generate:sdk",
     "prepare": "husky"
   },
   "lint-staged": {
