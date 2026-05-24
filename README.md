@@ -28,6 +28,14 @@ The system combines:
 
 ---
 
+## Environment Variables
+
+This template uses Prisma for data storage, so a `.env` file is required for configuration.
+
+You must create it in `apps/api/` before running the project.
+
+See `apps/api/example.env` for a reference template.
+
 ## Getting Started
 
 1. Clone the repository
