@@ -7,7 +7,7 @@ export const UserReqSchema = z.object({
 export const UserResSchema = z.object({
   id: z.number().int(),
   email: z.email(),
-  name: z.string().nullable().optional(),
+  name: z.string(),
 });
 
 export const UsersResSchema = z.array(UserResSchema);
