@@ -1,1 +1,1 @@
-pnpm exec turbo run test build --affected
+pnpm exec turbo run test --affected
