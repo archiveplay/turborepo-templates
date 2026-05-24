@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { UsersResType, UserResType } from '@repo/api/user';
-import { PrismaService } from './prisma/prisma.service';
+import { UserResType, UsersResType } from '@repo/api/user';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
-export class AppService {
+export class UserService {
   constructor(private readonly prisma: PrismaService) {}
 
   async getUserById(id: number): Promise<UserResType> {

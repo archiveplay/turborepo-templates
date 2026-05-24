@@ -1,21 +1,21 @@
 import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
-import { UserResDto, UsersResDto } from './common/dto/';
-import { AppService } from './app.service';
+import { UserService } from './user.service';
 import { ZodResponse } from 'nestjs-zod';
+import { UserResDto, UsersResDto } from 'src/common/dto';
 
 @Controller()
-export class AppController {
-  constructor(private readonly appService: AppService) {}
+export class UserController {
+  constructor(private readonly userService: UserService) {}
 
   @Get('users/:id')
   @ZodResponse({ type: UserResDto })
   userById(@Param('id', ParseIntPipe) id: number) {
-    return this.appService.getUserById(id);
+    return this.userService.getUserById(id);
   }
 
   @Get('users')
   @ZodResponse({ type: UsersResDto })
   users() {
-    return this.appService.getUsers();
+    return this.userService.getUsers();
   }
 }
