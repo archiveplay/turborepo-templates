@@ -5,7 +5,8 @@
     "./filters/all-exceptions": "./dist/filters/all-exceptions.filter.js"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "postinstall": "pnpm build"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",

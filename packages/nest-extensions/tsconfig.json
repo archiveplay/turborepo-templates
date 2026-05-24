@@ -1,7 +1,7 @@
 {
   "extends": "@repo/typescript-config/nest.json",
   "compilerOptions": {
-    "incremental": true,
+    "incremental": false,
     "module": "ESNext",
     "moduleResolution": "bundler",
     "target": "ES2023",
