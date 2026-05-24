@@ -9,6 +9,7 @@
     "db:migrate:dev": "prisma migrate dev",
     "db:push": "prisma db push",
     "db:seed": "tsx src/user-seed.ts",
+    "db:generate": "pnpm run generate",
     "dev": "tsup src/* --watch --format esm",
     "format": "prisma format",
     "generate": "prisma generate",

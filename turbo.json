@@ -4,7 +4,7 @@
   "globalDependencies": ["**/.env.*", "**/tsconfig.json", "**/turbo.json"],
   "tasks": {
     "build": {
-      "dependsOn": ["^build", "generate:sdk"],
+      "dependsOn": ["^build", "db:generate", "generate:sdk"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
@@ -22,6 +22,15 @@
     },
     "test": {
       "dependsOn": ["^test"]
+    },
+    "db:generate": {
+      "cache": true,
+      "inputs": ["prisma/schema.prisma"],
+      "outputs": ["node_modules/.prisma/**"]
+    },
+    "db:migrate:dev": {
+      "cache": false,
+      "persistent": false
     },
     "generate:openapi": {
       "cache": false,

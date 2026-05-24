@@ -10,6 +10,8 @@
     "check-types": "turbo run check-types",
     "generate:openapi": "turbo run generate:openapi",
     "generate:sdk": "turbo run generate:sdk",
+    "db:generate": "turbo run db:generate",
+    "db:migrate:dev": "turbo run db:migrate:dev",
     "prepare": "husky"
   },
   "lint-staged": {
