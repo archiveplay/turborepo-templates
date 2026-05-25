@@ -59,47 +59,37 @@
           "id": {
             "type": "integer",
             "minimum": -9007199254740991,
-            "maximum": 9007199254740991,
-            "x-nestjs_zod-parent-additional-properties": false
+            "maximum": 9007199254740991
           },
           "email": {
             "type": "string",
             "format": "email",
-            "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
-            "x-nestjs_zod-parent-additional-properties": false
+            "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
           },
-          "name": {
-            "type": "string",
-            "x-nestjs_zod-parent-additional-properties": false
-          }
+          "name": { "type": "string" }
         },
-        "required": ["id", "email", "name"]
+        "required": ["id", "email", "name"],
+        "additionalProperties": false
       },
       "UsersResDto_Output": {
-        "type": "object",
-        "properties": {
-          "root": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "integer",
-                  "minimum": -9007199254740991,
-                  "maximum": 9007199254740991
-                },
-                "email": {
-                  "type": "string",
-                  "format": "email",
-                  "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
-                },
-                "name": { "type": "string" }
-              },
-              "required": ["id", "email", "name"],
-              "additionalProperties": false
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
             },
-            "x-nestjs_zod-unwrap-root": true
-          }
+            "email": {
+              "type": "string",
+              "format": "email",
+              "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+            },
+            "name": { "type": "string" }
+          },
+          "required": ["id", "email", "name"],
+          "additionalProperties": false
         }
       }
     }

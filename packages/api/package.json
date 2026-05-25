@@ -8,7 +8,6 @@
     "./client": "./client.ts"
   },
   "scripts": {
-    "generate:openapi": "ts-node ../../apps/api/scripts/generate-openapi.ts",
     "generate:sdk": "orval"
   },
   "dependencies": {

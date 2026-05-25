@@ -16,7 +16,7 @@ export interface UserResDtoOutput {
   name: string;
 }
 
-export type UsersResDtoOutputRootItem = {
+export type UsersResDtoOutputItem = {
   /**
    * @minimum -9007199254740991
    * @maximum 9007199254740991
@@ -27,9 +27,7 @@ export type UsersResDtoOutputRootItem = {
   name: string;
 };
 
-export interface UsersResDtoOutput {
-  root?: UsersResDtoOutputRootItem[];
-}
+export type UsersResDtoOutput = UsersResDtoOutputItem[];
 
 export type userControllerUserByIdResponseDefault = {
   data: UserResDtoOutput;
