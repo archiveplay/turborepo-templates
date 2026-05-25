@@ -1,13 +1,6 @@
 {
   "extends": "@repo/typescript-config/nest.json",
   "compilerOptions": {
-    "incremental": false,
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "target": "ES2023",
-    "strict": true,
-    "esModuleInterop": true,
-
     "rootDir": "src",
     "outDir": "dist"
   }

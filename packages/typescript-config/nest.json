@@ -7,8 +7,6 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": false,
     "incremental": true,
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
     "noFallthroughCasesInSwitch": false,
     "noImplicitAny": false,
     "removeComments": true,
