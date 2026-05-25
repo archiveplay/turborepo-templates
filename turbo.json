@@ -16,7 +16,7 @@
       "dependsOn": ["^check-types"]
     },
     "dev": {
-      "env": ["PORT", "PRISMA_CONNECTION_STRING"],
+      "env": ["PORT", "DATABASE_URL"],
       "cache": false,
       "persistent": true
     },
