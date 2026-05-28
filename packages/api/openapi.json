@@ -13,6 +13,14 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserResDto" }
+              }
+            }
+          },
           "default": {
             "description": "",
             "content": {
@@ -30,6 +38,17 @@
         "operationId": "UserController_users",
         "parameters": [],
         "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/UsersResDto" }
+                }
+              }
+            }
+          },
           "default": {
             "description": "",
             "content": {
@@ -53,6 +72,23 @@
   "servers": [],
   "components": {
     "schemas": {
+      "UserResDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+          },
+          "name": { "type": "string" }
+        },
+        "required": ["id", "email", "name"]
+      },
       "UserResDto_Output": {
         "type": "object",
         "properties": {
@@ -70,6 +106,26 @@
         },
         "required": ["id", "email", "name"],
         "additionalProperties": false
+      },
+      "UsersResDto": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+            },
+            "name": { "type": "string" }
+          },
+          "required": ["id", "email", "name"]
+        }
       },
       "UsersResDto_Output": {
         "type": "array",

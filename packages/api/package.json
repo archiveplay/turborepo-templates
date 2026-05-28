@@ -5,7 +5,8 @@
   "exports": {
     "./ping": "./contracts/ping.ts",
     "./user": "./contracts/user.ts",
-    "./client": "./client.ts"
+    "./client": "./client.ts",
+    "./config": "./fetcher.ts"
   },
   "scripts": {
     "generate:sdk": "orval"
@@ -16,5 +17,9 @@
   "devDependencies": {
     "orval": "^8.11.0",
     "ts-node": "^10.9.2"
+  },
+  "peerDependencies": {
+    "@tanstack/vue-query": "^5.100.14",
+    "vue": "^3.5.32"
   }
 }
