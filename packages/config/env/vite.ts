@@ -2,7 +2,9 @@ import { z } from "zod";
 
 export const clientSchema = z.object({
   VITE_API_URL: z.url(),
-  NODE_ENV: z.enum(["development", "test", "production"]),
+  NODE_ENV: z
+    .enum(["development", "test", "production"])
+    .default("development"),
 });
 
 export const env = clientSchema
