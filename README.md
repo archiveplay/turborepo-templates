@@ -48,7 +48,11 @@ See `apps/api/example.env` for a reference template.
    pnpm db:generate
    pnpm db:migrate:dev
 
-4. Build the project (optional on first setup):
+4. Generate clients sdk
+
+   pnpm generate:openapi:sdk
+
+5. Build the project (optional on first setup):
 
    pnpm build
 

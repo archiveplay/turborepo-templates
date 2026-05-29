@@ -218,7 +218,7 @@ export function useUserControllerUserById<
 }
 
 export type userControllerUsersResponse200 = {
-  data: UsersResDto[];
+  data: UsersResDto;
   status: 200;
 };
 

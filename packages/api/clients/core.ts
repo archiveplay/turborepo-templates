@@ -137,7 +137,7 @@ export const userControllerUserById = async (
 };
 
 export type userControllerUsersResponse200 = {
-  data: UsersResDto[];
+  data: UsersResDto;
   status: 200;
 };
 

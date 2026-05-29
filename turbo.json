@@ -4,7 +4,7 @@
   "globalDependencies": ["**/.env.*", "**/tsconfig.json", "**/turbo.json"],
   "tasks": {
     "build": {
-      "dependsOn": ["^build", "db:generate", "generate:sdk"],
+      "dependsOn": ["^build", "db:generate"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
@@ -33,14 +33,11 @@
       "persistent": false
     },
     "generate:openapi": {
-      "cache": false,
-      "outputs": ["openapi.json"]
+      "cache": false
     },
     "generate:sdk": {
-      "dependsOn": ["generate:openapi"],
       "inputs": ["openapi.json"],
-      "outputs": ["client.ts"],
-      "cache": false
+      "outputs": ["clients/core.ts", "clients/vue.ts", "clients/react.ts"]
     }
   }
 }
