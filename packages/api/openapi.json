@@ -42,10 +42,7 @@
             "description": "",
             "content": {
               "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": { "$ref": "#/components/schemas/UsersResDto" }
-                }
+                "schema": { "$ref": "#/components/schemas/UsersResDto" }
               }
             }
           },

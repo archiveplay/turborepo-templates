@@ -5,15 +5,12 @@
  * Swagger api description
  * OpenAPI spec version: 1.0
  */
-import { useInfiniteQuery, useQuery } from "@tanstack/vue-query";
+import { useQuery } from "@tanstack/vue-query";
 import type {
   DataTag,
-  InfiniteData,
   QueryClient,
   QueryFunction,
   QueryKey,
-  UseInfiniteQueryOptions,
-  UseInfiniteQueryReturnType,
   UseQueryOptions,
   UseQueryReturnType,
 } from "@tanstack/vue-query";
@@ -21,7 +18,7 @@ import type {
 import { computed, unref } from "vue";
 import type { MaybeRef } from "vue";
 
-import { customFetch } from "./fetcher";
+import { customFetch } from "../fetcher";
 export interface UserResDto {
   /**
    * @minimum -9007199254740991
@@ -158,97 +155,9 @@ export const userControllerUserById = async (
   );
 };
 
-export const getUserControllerUserByIdInfiniteQueryKey = (
-  id: MaybeRef<number>,
-) => {
-  return ["infinite", "users", id] as const;
-};
-
 export const getUserControllerUserByIdQueryKey = (id: MaybeRef<number>) => {
   return ["users", id] as const;
 };
-
-export const getUserControllerUserByIdInfiniteQueryOptions = <
-  TData = InfiniteData<Awaited<ReturnType<typeof userControllerUserById>>>,
-  TError = UserResDtoOutput,
->(
-  id: MaybeRef<number>,
-  options?: {
-    query?: Partial<
-      UseInfiniteQueryOptions<
-        Awaited<ReturnType<typeof userControllerUserById>>,
-        TError,
-        TData
-      >
-    >;
-    request?: SecondParameter<typeof customFetch>;
-  },
-) => {
-  const { query: queryOptions, request: requestOptions } = options ?? {};
-
-  const queryKey = getUserControllerUserByIdInfiniteQueryKey(id);
-
-  const queryFn: QueryFunction<
-    Awaited<ReturnType<typeof userControllerUserById>>
-  > = ({ signal }) =>
-    userControllerUserById(unref(id), { signal, ...requestOptions });
-
-  return {
-    queryKey,
-    queryFn,
-    enabled: computed(() => unref(id) !== null && unref(id) !== undefined),
-    ...queryOptions,
-  } as UseInfiniteQueryOptions<
-    Awaited<ReturnType<typeof userControllerUserById>>,
-    TError,
-    TData
-  >;
-};
-
-export type UserControllerUserByIdInfiniteQueryResult = NonNullable<
-  Awaited<ReturnType<typeof userControllerUserById>>
->;
-export type UserControllerUserByIdInfiniteQueryError = UserResDtoOutput;
-
-export function useUserControllerUserByIdInfinite<
-  TData = InfiniteData<Awaited<ReturnType<typeof userControllerUserById>>>,
-  TError = UserResDtoOutput,
->(
-  id: MaybeRef<number>,
-  options?: {
-    query?: Partial<
-      UseInfiniteQueryOptions<
-        Awaited<ReturnType<typeof userControllerUserById>>,
-        TError,
-        TData
-      >
-    >;
-    request?: SecondParameter<typeof customFetch>;
-  },
-  queryClient?: QueryClient,
-): UseInfiniteQueryReturnType<TData, TError> & {
-  queryKey: DataTag<QueryKey, TData, TError>;
-} {
-  const queryOptions = getUserControllerUserByIdInfiniteQueryOptions(
-    id,
-    options,
-  );
-
-  const query = useInfiniteQuery(
-    queryOptions,
-    queryClient,
-  ) as UseInfiniteQueryReturnType<TData, TError> & {
-    queryKey: DataTag<QueryKey, TData, TError>;
-  };
-
-  query.queryKey = unref(queryOptions).queryKey as DataTag<
-    QueryKey,
-    TData,
-    TError
-  >;
-
-  return query;
-}
 
 export const getUserControllerUserByIdQueryOptions = <
   TData = Awaited<ReturnType<typeof userControllerUserById>>,
@@ -328,7 +237,7 @@ export function useUserControllerUserById<
 }
 
 export type userControllerUsersResponse200 = {
-  data: UsersResDto;
+  data: UsersResDto[];
   status: 200;
 };
 
@@ -363,82 +272,9 @@ export const userControllerUsers = async (
   });
 };
 
-export const getUserControllerUsersInfiniteQueryKey = () => {
-  return ["infinite", "users"] as const;
-};
-
 export const getUserControllerUsersQueryKey = () => {
   return ["users"] as const;
 };
-
-export const getUserControllerUsersInfiniteQueryOptions = <
-  TData = InfiniteData<Awaited<ReturnType<typeof userControllerUsers>>>,
-  TError = UsersResDtoOutput,
->(options?: {
-  query?: Partial<
-    UseInfiniteQueryOptions<
-      Awaited<ReturnType<typeof userControllerUsers>>,
-      TError,
-      TData
-    >
-  >;
-  request?: SecondParameter<typeof customFetch>;
-}) => {
-  const { query: queryOptions, request: requestOptions } = options ?? {};
-
-  const queryKey = getUserControllerUsersInfiniteQueryKey();
-
-  const queryFn: QueryFunction<
-    Awaited<ReturnType<typeof userControllerUsers>>
-  > = ({ signal }) => userControllerUsers({ signal, ...requestOptions });
-
-  return { queryKey, queryFn, ...queryOptions } as UseInfiniteQueryOptions<
-    Awaited<ReturnType<typeof userControllerUsers>>,
-    TError,
-    TData
-  >;
-};
-
-export type UserControllerUsersInfiniteQueryResult = NonNullable<
-  Awaited<ReturnType<typeof userControllerUsers>>
->;
-export type UserControllerUsersInfiniteQueryError = UsersResDtoOutput;
-
-export function useUserControllerUsersInfinite<
-  TData = InfiniteData<Awaited<ReturnType<typeof userControllerUsers>>>,
-  TError = UsersResDtoOutput,
->(
-  options?: {
-    query?: Partial<
-      UseInfiniteQueryOptions<
-        Awaited<ReturnType<typeof userControllerUsers>>,
-        TError,
-        TData
-      >
-    >;
-    request?: SecondParameter<typeof customFetch>;
-  },
-  queryClient?: QueryClient,
-): UseInfiniteQueryReturnType<TData, TError> & {
-  queryKey: DataTag<QueryKey, TData, TError>;
-} {
-  const queryOptions = getUserControllerUsersInfiniteQueryOptions(options);
-
-  const query = useInfiniteQuery(
-    queryOptions,
-    queryClient,
-  ) as UseInfiniteQueryReturnType<TData, TError> & {
-    queryKey: DataTag<QueryKey, TData, TError>;
-  };
-
-  query.queryKey = unref(queryOptions).queryKey as DataTag<
-    QueryKey,
-    TData,
-    TError
-  >;
-
-  return query;
-}
 
 export const getUserControllerUsersQueryOptions = <
   TData = Awaited<ReturnType<typeof userControllerUsers>>,

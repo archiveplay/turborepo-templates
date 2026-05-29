@@ -5,7 +5,9 @@
   "exports": {
     "./ping": "./contracts/ping.ts",
     "./user": "./contracts/user.ts",
-    "./client": "./client.ts",
+    "./client/core": "./clients/core.ts",
+    "./client/vue": "./clients/vue.ts",
+    "./client/react": "./clients/react.ts",
     "./config": "./fetcher.ts"
   },
   "scripts": {

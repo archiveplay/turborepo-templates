@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useUserControllerUsers } from "@repo/api/client"
+import { useUserControllerUsers } from "@repo/api/client/vue"
 
 const { data, isLoading } = useUserControllerUsers()
 </script>

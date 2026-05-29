@@ -1,21 +1,45 @@
 // orval.config.ts
 export default {
-  api: {
+  apiVue: {
     input: "./openapi.json",
     output: {
-      target: "./client.ts",
+      target: "./clients/vue.ts",
       client: "vue-query",
       mode: "single",
-
       override: {
         mutator: {
           path: "./fetcher.ts",
           name: "customFetch",
         },
+      },
+    },
+  },
 
-        query: {
-          useQuery: true,
-          useInfinite: true,
+  apiReact: {
+    input: "./openapi.json",
+    output: {
+      target: "./clients/react.ts",
+      client: "react-query",
+      mode: "single",
+      override: {
+        mutator: {
+          path: "./fetcher.ts",
+          name: "customFetch",
+        },
+      },
+    },
+  },
+
+  apiCore: {
+    input: "./openapi.json",
+    output: {
+      target: "./clients/core.ts",
+      client: "fetch",
+      mode: "single",
+      override: {
+        mutator: {
+          path: "./fetcher.ts",
+          name: "customFetch",
         },
       },
     },
