@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest'
 
-import { mount } from '@vue/test-utils'
 import App from '../App.vue'
+import { mountWithPlugins } from './mount'
 
 describe('App', () => {
   it('mounts renders properly', () => {
-    const wrapper = mount(App)
+    const wrapper = mountWithPlugins(App)
     expect(wrapper.text()).toContain('You did it!')
   })
 })
