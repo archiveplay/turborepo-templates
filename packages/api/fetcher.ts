@@ -3,8 +3,19 @@ export type ApiClientConfig = {
   fetch?: typeof fetch;
 };
 
+/**
+ * Default API baseUrl is "/api".
+ *
+ * This design assumes a reverse proxy (e.g. Vite dev proxy or production gateway)
+ * that forwards "/api" requests to the backend service.
+ *
+ * In environments without a proxy, you must explicitly configure the client:
+ *
+ * @example
+ * configureClient({ baseUrl: "https://your-backend.com" });
+ */
 let config: ApiClientConfig = {
-  baseUrl: "",
+  baseUrl: "/api",
   fetch: globalThis.fetch.bind(globalThis),
 };
 

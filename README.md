@@ -34,6 +34,24 @@ For template usage you need to provide `.env` files required for configuration
 
 See `apps/{app-name}/example.env` for a reference template.
 
+### Default API Base URL
+
+The default `baseUrl` for the API client is: `/api`
+
+This setup assumes a reverse proxy (e.g. Vite dev proxy or a production gateway) is in place, which forwards `/api` requests to the backend service.
+
+---
+
+### Without a Proxy
+
+If your environment does not use a reverse proxy, you must explicitly configure the API client:
+
+```ts
+configureClient({
+  baseUrl: "https://your-backend.com",
+});
+```
+
 ## Getting Started
 
 1. Clone the repository
