@@ -1,8 +1,10 @@
 {
+  "$schema": "https://www.schemastore.org/jest.json",
   "moduleFileExtensions": ["js", "json", "ts"],
   "rootDir": ".",
   "testEnvironment": "node",
   "testRegex": ".e2e-spec.ts$",
+  "transformIgnorePatterns": ["node_modules/(?!(.*@repo.*)/)"],
   "moduleNameMapper": {
     "^src/(.*)$": "<rootDir>/../src/$1"
   },
